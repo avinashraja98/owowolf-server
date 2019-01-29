@@ -4,7 +4,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-server.listen(8000, () => console.log('listening on *:8000'));
+server.listen(process.env.port || 8000, () => console.log('listening on *:8000'));
 
 io.on('connection', (socket) => {
   socket.on('getRoomInfo', (roomId) => {
