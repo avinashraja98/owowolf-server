@@ -6,6 +6,8 @@ const io = require('socket.io')(server);
 
 server.listen(process.env.port || 8000, () => console.log('listening on *:8000'));
 
+app.get('/', (req, res) => res.send('SocketIO Server Started!'));
+
 io.on('connection', (socket) => {
   socket.on('getRoomInfo', (roomId) => {
     socket.emit('roomInfo', socket.adapter.rooms[roomId]);
